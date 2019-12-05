@@ -1,0 +1,6 @@
+# IDE
+/.idea/
+/screenplay-java.iml
+
+# webdrivers
+/resources/chromedriver.exe
