@@ -1,3 +1,6 @@
+# target
+/target/
+
 # IDE
 /.idea/
 /screenplay-java.iml
