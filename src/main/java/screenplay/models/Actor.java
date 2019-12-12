@@ -1,11 +1,19 @@
 package screenplay.models;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
 public class Actor {
 
     private String name;
+    private WebDriver driver;
 
     public Actor(String called) {
         name = called;
+
+        System.setProperty("webdriver.chrome.driver", "resources/geckodriver.exe");
+        driver = new FirefoxDriver();
+        driver.manage().window().maximize();
     }
 
     public void wasAbleTo(Task task) {
@@ -21,10 +29,10 @@ public class Actor {
     }
 
     private void ask(Question question) {
-        question.ask();
+        question.ask(driver);
     }
 
     private void perform(final Task task) {
-        task.perform();
+        task.perform(driver);
     }
 }

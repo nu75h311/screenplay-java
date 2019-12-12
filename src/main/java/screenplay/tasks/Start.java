@@ -1,5 +1,7 @@
 package screenplay.tasks;
 
+import org.openqa.selenium.WebDriver;
+
 import screenplay.models.Task;
 
 public class Start implements Task {
@@ -9,7 +11,7 @@ public class Start implements Task {
     }
 
     @Override
-    public void perform() {
-        System.out.println("Starting with an empty list.");
+    public void perform(WebDriver driver) {
+        driver.get("http://todomvc.com/examples/vanillajs/");
     }
 }
