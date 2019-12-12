@@ -7,7 +7,7 @@ import screenplay.tasks.Start;
 
 public class SP_AddTodoTests {
 
-    Actor alice = new Actor("Alice");
+    Actor alice = new Actor("Alice").whoSurfsWithFirefox();
 
     @Test
     public void should_be_able_to_add_an_item_to_the_todo_list() {

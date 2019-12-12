@@ -2,5 +2,5 @@
 /.idea/
 /screenplay-java.iml
 
-# webdrivers
-/resources/*driver.exe
+# properties
+/src/main/resources/config.properties
