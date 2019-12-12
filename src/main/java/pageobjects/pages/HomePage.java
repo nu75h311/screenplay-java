@@ -6,21 +6,22 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+import org.springframework.stereotype.Component;
 
-public class HomePage {
+@Component
+public class HomePage extends BasePage {
 
-    private WebDriver driver;
+    private static final String TODO_MVC_URL = "http://todomvc.com/examples/vanillajs/";
 
     private By todoField = By.className("new-todo");
     private By todoList = By.cssSelector(".todo-list li");
 
-    public HomePage(final WebDriver driver) {
-        this.driver = driver;
+    public void navigate() {
+        browser().get(TODO_MVC_URL);
     }
 
     public void addTodo(String todoText) {
-        driver.findElement(todoField).sendKeys(todoText, Keys.ENTER);
+        browser().findElement(todoField).sendKeys(todoText, Keys.ENTER);
     }
 
     public void addTodos(String... todoList) {
@@ -29,7 +30,7 @@ public class HomePage {
 
     public List<String> getTodosList() {
         List<String> todos = new ArrayList<>();
-        driver.findElements(todoList).forEach(item -> todos.add(item.getText()));
+        browser().findElements(todoList).forEach(item -> todos.add(item.getText()));
         return todos;
     }
 }

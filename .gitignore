@@ -3,4 +3,4 @@
 /screenplay-java.iml
 
 # webdrivers
-/resources/chromedriver.exe
+/resources/*driver.exe
