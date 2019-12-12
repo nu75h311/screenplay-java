@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import pageobjects.pages.BasePage;
-import pageobjects.pages.HomePage;
+import pageobjects.pages.TodoMvcPage;
 
 @Component
 public class BaseTest {
@@ -15,12 +15,11 @@ public class BaseTest {
     protected BasePage basePage;
 
     @Autowired
-    protected HomePage homePage;
+    protected TodoMvcPage todoMvcPage;
 
     @BeforeEach
     public void setUp() {
         basePage.openBrowser();
-        homePage.navigate();
     }
 
     @AfterEach

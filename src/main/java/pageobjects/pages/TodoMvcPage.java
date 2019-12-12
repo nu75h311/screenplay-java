@@ -9,7 +9,7 @@ import org.openqa.selenium.Keys;
 import org.springframework.stereotype.Component;
 
 @Component
-public class HomePage extends BasePage {
+public class TodoMvcPage extends BasePage {
 
     private static final String TODO_MVC_URL = "http://todomvc.com/examples/vanillajs/";
 
