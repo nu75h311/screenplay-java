@@ -1,10 +1,10 @@
 package screenplay.models;
 
-import static screenplay.models.WebdriverFinder.loadConfigFile;
+import static org.openqa.selenium.remote.BrowserType.CHROME;
+import static org.openqa.selenium.remote.BrowserType.FIREFOX;
+import static utils.WebdriverInitializer.getDriverFor;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Actor {
 
@@ -16,16 +16,12 @@ public class Actor {
     }
 
     public Actor whoSurfsWithFirefox() {
-        loadConfigFile();
-        driver = new FirefoxDriver();
-        maximizeWindow();
+        driver = getDriverFor(FIREFOX);
         return this;
     }
 
     public Actor whoSurfsWithChrome() {
-        loadConfigFile();
-        driver = new ChromeDriver();
-        maximizeWindow();
+        driver = getDriverFor(CHROME);
         return this;
     }
 
@@ -37,19 +33,20 @@ public class Actor {
         perform(task);
     }
 
-    public void shouldSee(Question question) {
+    public void shouldSeeThat(Question question) {
         ask(question);
     }
 
+    public void closesTheBrowser() {
+        driver.quit();
+    }
+
     private void ask(Question question) {
-        question.ask(driver);
+        question.ask(driver, name);
     }
 
-    private void perform(final Task task) {
-        task.perform(driver);
+    private void perform(Task task) {
+        task.perform(driver, name);
     }
 
-    private void maximizeWindow() {
-        driver.manage().window().maximize();
-    }
 }

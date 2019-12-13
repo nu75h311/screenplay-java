@@ -1,16 +1,16 @@
 package pageobjects.pages;
 
+import static org.openqa.selenium.remote.BrowserType.FIREFOX;
+import static utils.WebdriverInitializer.getDriverFor;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class BasePage {
 
     private WebDriver driver;
 
     public void openBrowser() {
-        System.setProperty("webdriver.chrome.driver", "resources/geckodriver.exe");
-        driver = new FirefoxDriver();
-        driver.manage().window().maximize();
+        driver = getDriverFor(FIREFOX);
     }
 
     public WebDriver browser() {

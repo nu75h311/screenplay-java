@@ -11,7 +11,8 @@ public class Start implements Task {
     }
 
     @Override
-    public void perform(WebDriver driver) {
+    public void perform(WebDriver driver, String actorName) {
         driver.get("http://todomvc.com/examples/vanillajs/");
+        logger.info("{} started with an empty todo list.", actorName);
     }
 }
