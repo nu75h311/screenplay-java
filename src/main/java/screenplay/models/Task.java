@@ -7,5 +7,5 @@ import org.openqa.selenium.WebDriver;
 public interface Task {
     Logger logger = LogManager.getLogger("TASK");
 
-    void perform(WebDriver driver, String actorName);
+    void perform(WebDriver driver, Actor actor);
 }

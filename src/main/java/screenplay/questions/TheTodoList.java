@@ -2,11 +2,11 @@ package screenplay.questions;
 
 public class TheTodoList {
 
-    public static TheTodoListSize size() {
-        return new TheTodoListSize();
+    public static TheTodoListSize sizeIs(int expectedSize) {
+        return new TheTodoListSize(expectedSize);
     }
 
-    public static TheTodoListContents contents() {
-        return new TheTodoListContents();
+    public static TheTodoListContents contentsHave(String... todoItems) {
+        return new TheTodoListContents(todoItems);
     }
 }

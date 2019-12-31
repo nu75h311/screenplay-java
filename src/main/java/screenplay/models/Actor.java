@@ -15,6 +15,10 @@ public class Actor {
         name = called;
     }
 
+    public String name() {
+        return name;
+    }
+
     public Actor whoSurfsWithFirefox() {
         driver = getDriverFor(FIREFOX);
         return this;
@@ -42,11 +46,11 @@ public class Actor {
     }
 
     private void ask(Question question) {
-        question.ask(driver, name);
+        question.ask(driver, this);
     }
 
     private void perform(Task task) {
-        task.perform(driver, name);
+        task.perform(driver, this);
     }
 
 }

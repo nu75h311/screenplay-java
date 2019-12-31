@@ -7,5 +7,5 @@ import org.openqa.selenium.WebDriver;
 public interface Question {
     Logger logger = LogManager.getLogger("QUESTION");
 
-    void ask(WebDriver driver, String actorName);
+    void ask(WebDriver driver, Actor actor);
 }
