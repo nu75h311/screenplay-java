@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 public interface Task {
-    Logger logger = LogManager.getLogger("TASK");
+    Logger logger = LogManager.getLogger("TASK    ");
 
     void perform(WebDriver driver, Actor actor);
 }
