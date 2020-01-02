@@ -1,8 +1,11 @@
 package screenplay;
 
+import static org.openqa.selenium.remote.BrowserType.FIREFOX;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
+import screenplay.abilities.SurfTheWeb;
 import screenplay.models.Actor;
 import screenplay.questions.TheTodoList;
 import screenplay.tasks.AddATodoItem;
@@ -10,7 +13,7 @@ import screenplay.tasks.Start;
 
 public class SP_AddTodoTests {
 
-    Actor alice = new Actor("Alice").whoSurfsWithFirefox();
+    Actor alice = new Actor("Alice").whoCan(SurfTheWeb.with(FIREFOX));
 
     @Test
     public void should_be_able_to_add_an_item_to_the_todo_list() {
