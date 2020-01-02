@@ -1,6 +1,8 @@
 package pageobjects;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.hasSize;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,15 +27,15 @@ public class PO_AddTodoTests extends BaseTest {
     @Test
     public void should_be_able_to_add_an_item_to_the_todo_list() {
         todoMvcPage.addTodo("Feed the cat");
-        assertThat(todoMvcPage.getTodosList()).hasSize(1)
-                                              .contains("Feed the cat");
+        assertThat(todoMvcPage.getTodosList(), hasSize(1));
+        assertThat(todoMvcPage.getTodosList(), contains("Feed the cat"));
     }
 
     @Test
     public void should_be_able_to_add_additional_todo_items() {
         todoMvcPage.addTodos("Feed the cat", "Take out the garbage");
         todoMvcPage.addTodo("Walk the dog");
-        assertThat(todoMvcPage.getTodosList()).hasSize(3)
-                                              .contains("Feed the cat", "Take out the garbage", "Walk the dog");
+        assertThat(todoMvcPage.getTodosList(), hasSize(3));
+        assertThat(todoMvcPage.getTodosList(), contains("Feed the cat", "Take out the garbage", "Walk the dog"));
     }
 }

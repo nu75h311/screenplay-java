@@ -1,6 +1,7 @@
 package screenplay.questions;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasItems;
 import static screenplay.pages.TodoMvcPageElements.TODO_LIST;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ class TheTodoListContents implements Question {
     public void ask(final WebDriver driver, final Actor actor) {
         List<String> todos = new ArrayList<>();
         driver.findElements(TODO_LIST.locator()).forEach(item -> todos.add(item.getText()));
-        assertThat(todos).contains(todoItems);
+        assertThat(todos, hasItems(todoItems));
         logger.info(() -> actor.name() + " saw that the list contains " + Arrays.toString(todoItems));
     }
 }

@@ -14,7 +14,7 @@
         <webdriver.version>3.141.59</webdriver.version>
         <log4j.version>2.12.1</log4j.version>
         <junit.version>5.5.2</junit.version>
-        <assertj.version>3.14.0</assertj.version>
+        <hamcrest.version>2.2</hamcrest.version>
         <spring.version>5.2.2.RELEASE</spring.version>
     </properties>
 
@@ -67,9 +67,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest</artifactId>
+            <version>${hamcrest.version}</version>
         </dependency>
 
     </dependencies>
