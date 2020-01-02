@@ -1,9 +1,5 @@
 package screenplay.models;
 
-import static org.openqa.selenium.remote.BrowserType.CHROME;
-import static org.openqa.selenium.remote.BrowserType.FIREFOX;
-import static utils.WebdriverInitializer.getDriverFor;
-
 import org.openqa.selenium.WebDriver;
 
 import io.restassured.response.Response;
@@ -22,14 +18,13 @@ public class Actor {
         return name;
     }
 
-    public Actor whoSurfsWithFirefox() {
-        driver = getDriverFor(FIREFOX);
+    public Actor whoCan(Ability ability) {
+        acquire(ability);
         return this;
     }
 
-    public Actor whoSurfsWithChrome() {
-        driver = getDriverFor(CHROME);
-        return this;
+    public void setDriver(WebDriver driver) {
+        this.driver = driver;
     }
 
     public Actor whoMakesApiCalls() {
@@ -50,6 +45,10 @@ public class Actor {
 
     public void closesTheBrowser() {
         driver.quit();
+    }
+
+    private void acquire(Ability ability) {
+        ability.acquire(this);
     }
 
     private void ask(Question question) {
