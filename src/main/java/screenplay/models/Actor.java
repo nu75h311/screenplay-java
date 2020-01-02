@@ -6,10 +6,13 @@ import static utils.WebdriverInitializer.getDriverFor;
 
 import org.openqa.selenium.WebDriver;
 
+import io.restassured.response.Response;
+
 public class Actor {
 
     private String name;
     private WebDriver driver;
+    private Response response;
 
     public Actor(String called) {
         name = called;
@@ -26,6 +29,10 @@ public class Actor {
 
     public Actor whoSurfsWithChrome() {
         driver = getDriverFor(CHROME);
+        return this;
+    }
+
+    public Actor whoMakesApiCalls() {
         return this;
     }
 
