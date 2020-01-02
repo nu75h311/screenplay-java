@@ -8,6 +8,7 @@ public class Actor {
 
     private String name;
     private WebDriver driver;
+    private String apiBaseUrl;
     private Response response;
 
     public Actor(String called) {
@@ -23,12 +24,24 @@ public class Actor {
         return this;
     }
 
-    public void setDriver(WebDriver driver) {
+    public Response getResponse() {
+        return response;
+    }
+
+    public void setResponse(final Response response) {
+        this.response = response;
+    }
+
+    public void setDriver(final WebDriver driver) {
         this.driver = driver;
     }
 
-    public Actor whoMakesApiCalls() {
-        return this;
+    public String getApiBaseUrl() {
+        return apiBaseUrl;
+    }
+
+    public void setApiBaseUrl(String apiBaseUrl) {
+        this.apiBaseUrl = apiBaseUrl;
     }
 
     public void wasAbleTo(Task task) {

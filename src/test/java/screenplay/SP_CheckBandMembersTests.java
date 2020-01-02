@@ -1,18 +1,31 @@
 package screenplay;
 
-import static io.restassured.RestAssured.get;
-import static org.hamcrest.Matchers.hasItems;
+import static screenplay.pages.MusicbrainzIds.NIRVANA;
+import static screenplay.pages.MusicbrainzIds.RUSH;
 
 import org.junit.jupiter.api.Test;
 
-import io.restassured.response.Response;
+import screenplay.abilities.MakeApiCalls;
+import screenplay.models.Actor;
+import screenplay.questions.TheBandMembers;
+import screenplay.tasks.GetDetails;
 
 public class SP_CheckBandMembersTests {
 
+    private static final String MUSICBRAINZ_BASE_URL = "http://musicbrainz.org/ws/2";
+
+    Actor spotify = new Actor("Spotify").whoCan(MakeApiCalls.at(MUSICBRAINZ_BASE_URL));
+
     @Test
-    public void should_be_able_to_check_us_bands() {
-        Response res = get("http://musicbrainz.org/ws/2/artist/5b11f4ce-a62d-471e-81fc-a69a8278c7da?inc=artist-rels&fmt=json");
-        res.then().body("relations.artist.name", hasItems("Dave Grohl", "Krist Novoselic", "Kurt Cobain"));
+    public void should_be_able_to_check_american_bands() {
+        spotify.attemptsTo(GetDetails.fromArtist(NIRVANA));
+        spotify.shouldSeeThat(TheBandMembers.namesContain("Dave Grohl", "Krist Novoselic", "Kurt Cobain"));
+    }
+
+    @Test
+    public void should_be_able_to_check_canadian_bands() {
+        spotify.attemptsTo(GetDetails.fromArtist(RUSH));
+        spotify.shouldSeeThat(TheBandMembers.namesContain("Alex Lifeson", "Geddy Lee", "Neil Peart"));
     }
 
 }
