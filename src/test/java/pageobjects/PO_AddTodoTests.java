@@ -36,6 +36,8 @@ public class PO_AddTodoTests extends BaseTest {
         todoMvcPage.addTodos("Feed the cat", "Take out the garbage");
         todoMvcPage.addTodo("Walk the dog");
         assertThat(todoMvcPage.getTodosList(), hasSize(3));
-        assertThat(todoMvcPage.getTodosList(), contains("Feed the cat", "Take out the garbage", "Walk the dog"));
+        assertThat(todoMvcPage.getTodosList(), contains("Feed the cat",
+                                                        "Take out the garbage",
+                                                        "Walk the dog"));
     }
 }
