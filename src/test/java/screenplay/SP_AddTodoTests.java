@@ -25,10 +25,13 @@ public class SP_AddTodoTests {
 
     @Test
     public void should_be_able_to_add_additional_todo_items() {
-        alice.wasAbleTo(Start.withAListContaining("Feed the cat", "Take out the garbage"));
+        alice.wasAbleTo(Start.withAListContaining("Feed the cat",
+                                                  "Take out the garbage"));
         alice.attemptsTo(AddATodoItem.called("Walk the dog"));
         alice.shouldSeeThat(TheTodoList.sizeIs(3));
-        alice.shouldSeeThat(TheTodoList.contentsHave("Feed the cat", "Take out the garbage", "Walk the dog"));
+        alice.shouldSeeThat(TheTodoList.contentsHave("Feed the cat",
+                                                     "Take out the garbage",
+                                                     "Walk the dog"));
     }
 
     @AfterEach

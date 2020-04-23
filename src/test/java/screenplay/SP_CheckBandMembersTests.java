@@ -19,13 +19,17 @@ public class SP_CheckBandMembersTests {
     @Test
     public void should_be_able_to_check_american_bands() {
         spotify.attemptsTo(GetDetails.fromArtist(NIRVANA));
-        spotify.shouldSeeThat(TheBandMembers.namesContain("Dave Grohl", "Krist Novoselic", "Kurt Cobain"));
+        spotify.shouldSeeThat(TheBandMembers.namesContain("Dave Grohl",
+                                                          "Krist Novoselic",
+                                                          "Kurt Cobain"));
     }
 
     @Test
     public void should_be_able_to_check_canadian_bands() {
         spotify.attemptsTo(GetDetails.fromArtist(RUSH));
-        spotify.shouldSeeThat(TheBandMembers.namesContain("Alex Lifeson", "Geddy Lee", "Neil Peart"));
+        spotify.shouldSeeThat(TheBandMembers.namesContain("Alex Lifeson",
+                                                          "Geddy Lee",
+                                                          "Neil Peart"));
     }
 
 }
