@@ -28,7 +28,9 @@ public class SP_AddTodoTests {
         alice.wasAbleTo(Start.withAListContaining("Feed the cat", "Take out the garbage"));
         alice.attemptsTo(AddATodoItem.called("Walk the dog"));
         alice.shouldSeeThat(TheTodoList.sizeIs(3));
-        alice.shouldSeeThat(TheTodoList.contentsHave("Feed the cat", "Take out the garbage", "Walk the dog"));
+        alice.shouldSeeThat(TheTodoList.contentsHave("Feed the cat",
+                                                     "Take out the garbage",
+                                                     "Walk the dog"));
     }
 
     @AfterEach
