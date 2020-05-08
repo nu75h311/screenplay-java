@@ -29,10 +29,8 @@ public class StartStepDefinitions implements En {
         Then("{word} should see that the todo list contains only {string}", (String actorName, String todoItem) -> {
             theActorCalled(actorName).shouldSeeThat(TheTodoList.sizeIs(1));
             theActorCalled(actorName).shouldSeeThat(TheTodoList.contentsHave(todoItem));
-            theActorCalled(actorName).closesTheBrowser();
         });
 
-        // TODO: clean up at Cast level.
-        // After(() -> cast.closesAllBrowsers);
+        After(() -> cast.closesAllBrowsers());
     }
 }

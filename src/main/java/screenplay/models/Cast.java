@@ -15,4 +15,8 @@ public class Cast {
         return cast.stream().filter(actor -> name.equals(actor.name())).findAny()
                 .orElseThrow(() -> new ScreenplayException("There is no actor named '" + name + "' in the cast."));
     }
+
+    public void closesAllBrowsers() {
+        cast.forEach(Actor::closesTheBrowser);
+    }
 }
