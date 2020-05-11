@@ -24,6 +24,6 @@ public class Cast {
     }
 
     public void closesAllBrowsers() {
-        castOfActors.forEach(Actor::closesTheBrowser);
+        castOfActors.forEach(Actor::cleanUp);
     }
 }

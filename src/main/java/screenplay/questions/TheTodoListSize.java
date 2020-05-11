@@ -7,12 +7,10 @@ import static screenplay.pages.TodoMvcPageElements.TODO_LIST;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.openqa.selenium.WebDriver;
-
-import screenplay.models.Actor;
+import screenplay.actors.WebSurfer;
 import screenplay.models.Question;
 
-class TheTodoListSize implements Question {
+class TheTodoListSize implements Question<WebSurfer> {
 
     int expectedSize;
 
@@ -21,9 +19,9 @@ class TheTodoListSize implements Question {
     }
 
     @Override
-    public void ask(final WebDriver driver, final Actor actor) {
+    public void ask(final WebSurfer actor) {
         List<String> todos = new ArrayList<>();
-        driver.findElements(TODO_LIST.locator()).forEach(item -> todos.add(item.getText()));
+        actor.getDriver().findElements(TODO_LIST.locator()).forEach(item -> todos.add(item.getText()));
         assertThat(todos.size(), equalTo(expectedSize));
         logger.info(() -> actor.name() + " saw that the list size is " + expectedSize);
     }

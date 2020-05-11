@@ -2,13 +2,11 @@ package screenplay.tasks;
 
 import static io.restassured.RestAssured.get;
 
-import org.openqa.selenium.WebDriver;
-
-import screenplay.models.Actor;
+import screenplay.actors.ApiClient;
 import screenplay.models.Task;
 import screenplay.pages.MusicbrainzIds;
 
-public class GetDetails implements Task {
+public class GetDetails implements Task<ApiClient> {
 
     MusicbrainzIds artistName;
 
@@ -21,7 +19,7 @@ public class GetDetails implements Task {
     }
 
     @Override
-    public void perform(final WebDriver driver, final Actor actor) {
+    public void perform(final ApiClient actor) {
         String apiQuery = actor.getApiBaseUrl() + "/artist/" + artistName.id() + "?inc=artist-rels&fmt=json";
         actor.setResponse(get(apiQuery));
         logger.info(() -> actor.name() + " got details from band " + artistName + "(" + apiQuery + ")");

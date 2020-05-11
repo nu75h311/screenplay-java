@@ -5,10 +5,11 @@ import static screenplay.pages.TodoMvcPageElements.TODO_FIELD;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
+import screenplay.actors.WebSurfer;
 import screenplay.models.Actor;
 import screenplay.models.Task;
 
-public class AddATodoItem implements Task {
+public class AddATodoItem implements Task<WebSurfer> {
 
     private String todoText;
 
@@ -21,8 +22,8 @@ public class AddATodoItem implements Task {
     }
 
     @Override
-    public void perform(WebDriver driver, Actor actor) {
-        driver.findElement(TODO_FIELD.locator()).sendKeys(todoText, Keys.ENTER);
+    public void perform(WebSurfer actor) {
+        actor.getDriver().findElement(TODO_FIELD.locator()).sendKeys(todoText, Keys.ENTER);
         logger.info(() -> actor.name() + " added a todo list item called '" + todoText + "'");
     }
 }

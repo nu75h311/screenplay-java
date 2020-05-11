@@ -1,9 +1,9 @@
 package screenplay.abilities;
 
+import screenplay.actors.ApiClient;
 import screenplay.models.Ability;
-import screenplay.models.Actor;
 
-public class MakeApiCalls implements Ability {
+public class MakeApiCalls implements Ability<ApiClient> {
 
     String apiBaseUrl;
 
@@ -16,7 +16,7 @@ public class MakeApiCalls implements Ability {
     }
 
     @Override
-    public void acquire(Actor actor) {
+    public void acquire(ApiClient actor) {
         actor.setApiBaseUrl(apiBaseUrl);
         logger.info(() -> actor.name() + " can make API calls at " + apiBaseUrl);
     }

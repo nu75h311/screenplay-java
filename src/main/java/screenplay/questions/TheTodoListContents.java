@@ -8,12 +8,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.openqa.selenium.WebDriver;
-
-import screenplay.models.Actor;
+import screenplay.actors.WebSurfer;
 import screenplay.models.Question;
 
-class TheTodoListContents implements Question {
+class TheTodoListContents implements Question<WebSurfer> {
 
     String[] todoItems;
 
@@ -22,9 +20,9 @@ class TheTodoListContents implements Question {
     }
 
     @Override
-    public void ask(final WebDriver driver, final Actor actor) {
+    public void ask(final WebSurfer actor) {
         List<String> todos = new ArrayList<>();
-        driver.findElements(TODO_LIST.locator()).forEach(item -> todos.add(item.getText()));
+        actor.getDriver().findElements(TODO_LIST.locator()).forEach(item -> todos.add(item.getText()));
         assertThat(todos, hasItems(todoItems));
         logger.info(() -> actor.name() + " saw that the list contains " + Arrays.toString(todoItems));
     }

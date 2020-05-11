@@ -2,10 +2,9 @@ package screenplay.models;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.WebDriver;
 
-public interface Question {
+public interface Question<T extends Actor> {
     Logger logger = LogManager.getLogger("QUESTION");
 
-    void ask(WebDriver driver, Actor actor);
+    void ask(T actor);
 }
