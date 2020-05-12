@@ -3,10 +3,8 @@ package screenplay.tasks;
 import static screenplay.pages.TodoMvcPageElements.TODO_FIELD;
 
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 
 import screenplay.actors.WebSurfer;
-import screenplay.models.Actor;
 import screenplay.models.Task;
 
 public class AddATodoItem implements Task<WebSurfer> {
