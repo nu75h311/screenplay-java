@@ -16,6 +16,7 @@
         <junit.version>5.5.2</junit.version>
         <hamcrest.version>2.2</hamcrest.version>
         <spring.version>5.2.2.RELEASE</spring.version>
+        <maven.failsafe.plugin.version>3.0.0-M4</maven.failsafe.plugin.version>
     </properties>
 
     <dependencies>
@@ -60,8 +61,20 @@
         </dependency>
 
         <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
@@ -82,6 +95,7 @@
                 <plugins>
                     <plugin>
                         <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>${maven.failsafe.plugin.version}</version>
                         <configuration>
                             <includes>
                                 <include>**/SP**Tests.java</include>
@@ -106,6 +120,7 @@
                 <plugins>
                     <plugin>
                         <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>${maven.failsafe.plugin.version}</version>
                         <configuration>
                             <includes>
                                 <include>**/PO**Tests.java</include>
