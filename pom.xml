@@ -17,7 +17,7 @@
         <cucumber.version>6.0.0-RC1</cucumber.version>
         <rest.assured.version>4.1.2</rest.assured.version>
         <hamcrest.version>2.2</hamcrest.version>
-        <spring.version>5.3.14</spring.version>
+        <spring.version>5.3.18</spring.version>
         <maven.failsafe.plugin.version>3.0.0-M4</maven.failsafe.plugin.version>
     </properties>
 
